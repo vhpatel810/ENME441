@@ -1,0 +1,16 @@
+import RPi.GPIO as GPIO
+from shifter import Shifter
+from problem5 import Bug
+import time
+
+try:
+    sh = Shifter(23, 25, 24)
+    bug = Bug(sh, timestep=0.05, x=4, isWrapOn=False)
+    bug.start()
+    while True:
+        bug.repeat()
+except KeyboardInterrupt:
+    pass
+finally:
+    bug.stop()
+    GPIO.cleanup()
