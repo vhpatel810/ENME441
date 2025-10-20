@@ -26,7 +26,7 @@ try:
 		bug.isWrapOn = not bug.isWrapON
 	laststate = current_s2
 
-	bug.timestep= (timedefault/3) if (GPIO.input (S3)== GPIO.LOW else timedefault
+	bug.timestep= (timedefault/3) if (GPIO.input (S3)== GPIO.LOW) else timedefault
 	bug.repeat()
 except KeyboardInterrupt:
 	GPIO.cleanup()
