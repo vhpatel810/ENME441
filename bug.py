@@ -17,7 +17,7 @@ try:
 	bug = Bug(shift, timestep = timedefault, x = 4, isWrapON= False)
 	laststate = GPIO.input(S2)
 	while True: 
-		if GPIO.input(S1) == GPIO.LOW
+		if GPIO.input(S1) == GPIO.LOW:
 			bug.start()
 		else: 
 			bug.stop()
