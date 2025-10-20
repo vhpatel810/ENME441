@@ -23,14 +23,7 @@ class Shifter:
 			GPIO.output(self.serialPin, b & (1<<i) )
 			self.__ping(self.clockPin)
 		self.__ping(self.latchPin)
-if __name__ == "__main__":
-	try:
-		shift = Shifter(23,25,24)
-		shift.shiftByte(0b01100110)
-		while True:
-			time.sleep(1)
-	except KeyboardInterrupt:
-		GPIO.cleanup()
+
 
 
 
