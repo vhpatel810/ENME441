@@ -33,3 +33,18 @@ class Bug:
 			return
 		self.__steprandom()
 		time.sleep(self.timestep)
+if __name__ == "__main__":
+    import RPi.GPIO as GPIO
+    try:
+        sh = Shifter(23, 25, 24)        # adjust pins if yours differ
+        bug = Bug(sh, timestep=0.05, x=4, isWrapOn=False)
+        bug.start()
+        while True:
+            bug.repeat()                # one step + sleep
+    except KeyboardInterrupt:
+        pass
+    finally:
+        try: bug.stop()
+        except: pass
+        GPIO.cleanup()
+
