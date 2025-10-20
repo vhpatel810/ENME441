@@ -26,9 +26,10 @@ class Shifter:
 if __name__ == "__main__":
 	try:
 		shift = Shifter(23,25,24)
-		shift.shiftByte(0b01100110)
+		shift.shiftByte(0b00000000)
 		while True:
 			time.sleep(1)
 	except KeyboardInterrupt:
 		GPIO.cleanup()
+
 
