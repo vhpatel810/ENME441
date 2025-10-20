@@ -14,13 +14,22 @@ class Bug:
 		self.__wrap = False
 	def __begin(self):
 		self.__shifter.shiftByte(1<<self.x )
+
 	def __steprandom(self):
 		move = random.choice([-1,1])
-		after = self.x + move
+		self.x = self.x + move
 		if self.isWrapOn: 
-			self.x = after % self.__outputs
+			if self.x<0:
+				self.x = self.__outputs - 1
+			elif self.x> self.__outputs - 1:
+				self.x = 0
 		else:
-			self.x = max(0,min(self.__outputs-1,after))
+			if self.x<0:
+				self.x = 0
+			elif self.x > self.__outputs - 1:
+				self.x = self.__outputs - 1
+
+			
 		self.__begin()
 	def start(self):
 		self.__wrap = True
@@ -33,6 +42,3 @@ class Bug:
 			return
 		self.__steprandom()
 		time.sleep(self.timestep)
-
-
-
