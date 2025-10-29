@@ -1,9 +1,8 @@
 import socket 
 import RPi.GPIO as GPIO
 
-addr = socket.getaddrinfo('',8080)[-1][-1]
-s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-s.bind(addr)
+s =socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s.bind(('', 8080))
 s.listen(1)
 GPIO.setmode(GPIO.BCM)
 led_GPIO_pins = [14,15,18]
@@ -75,6 +74,9 @@ finally:
 	GPIO.cleanup()
 	s.close()
 	print("GPIO cleaned")
+
+
+
 
 
 
