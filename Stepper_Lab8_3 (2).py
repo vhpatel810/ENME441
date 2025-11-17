@@ -119,7 +119,7 @@ class Stepper:
 
 
 if __name__ == '__main__':
-    Stepper.shifter_outputs = multiprocessing.Value('i')
+    Stepper.shifter_outputs = multiprocessing.Value('i', 0)
 
     s = Shifter(data=16,latch=20,clock=21)   # set up Shifter
 
@@ -158,5 +158,6 @@ if __name__ == '__main__':
         while True:
             pass
     except:
+
 
         print('\nend')
